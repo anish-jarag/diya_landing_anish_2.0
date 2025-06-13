@@ -1,0 +1,120 @@
+---
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+
+import type { Hero as Props } from '~/types';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  content = await Astro.slots.render('content'),
+  actions = await Astro.slots.render('actions'),
+  image = await Astro.slots.render('image'),
+  id,
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<section
+  {...id ? { id } : {}}
+  class="relative not-prose flex flex-col justify-center items-center min-h-[calc(100vh-76px)] pt-[76px]"
+>
+  <!-- 🌄 Background Image -->
+  <div class="absolute inset-0 z-[-2]" aria-hidden="true">
+    <slot name="bg">
+      {
+        bg ? (
+          <Fragment set:html={bg} />
+        ) : (
+          <Image
+            src="~/assets/images/hero.png"
+            alt="Background Illustration"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+        )
+      }
+    </slot>
+  </div>
+
+  <!-- 🌫️ Blur + Tint Overlay -->
+  <div class="absolute inset-0 z-[-1] bg-black/40 dark:bg-black/70 backdrop-blur-sm" aria-hidden="true"></div>
+
+  <!-- ✨ Hero Content -->
+  <div class="relative z-0 max-w-7xl mx-auto px-6 sm:px-8 text-center">
+    <div class="py-16 sm:py-24 md:py-32 lg:py-40 space-y-6">
+      {
+        tagline && (
+          <p
+            class="text-sm sm:text-base text-blue-300 dark:text-blue-200 font-semibold tracking-widest uppercase animate-fade-in"
+            set:html={tagline}
+          />
+        )
+      }
+
+      {
+        title && (
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white dark:text-gray-100 drop-shadow-md animate-fade-in"
+            set:html={title}
+          />
+        )
+      }
+
+      {
+        subtitle && (
+          <p
+            class="max-w-2xl mx-auto text-lg sm:text-xl text-white/90 dark:text-gray-300 mt-4 animate-fade-in"
+            set:html={subtitle}
+          />
+        )
+      }
+
+      {
+        actions && (
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+            {Array.isArray(actions) ? (
+              actions.map((action, index) => (
+                <Button
+                  {...(action || {})}
+                  class={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+                    index === 0
+                      ? 'bg-white text-black hover:bg-gray-200'
+                      : 'bg-transparent border border-white text-white hover:bg-white/10'
+                  }`}
+                />
+              ))
+            ) : (
+              <Fragment set:html={actions} />
+            )}
+          </div>
+        )
+      }
+
+      {content && <Fragment set:html={content} />}
+    </div>
+  </div>
+
+  <!-- Optional Image Below Hero Text -->
+  {
+    image && (
+      <div class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade mt-12">
+        <div class="relative m-auto max-w-full sm:max-w-3xl lg:max-w-5xl">
+          {typeof image === 'string' ? (
+            <Fragment set:html={image} />
+          ) : (
+            <Image
+              class="mx-auto rounded-md w-full"
+              widths={[400, 768, 1024, 2040]}
+              sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+              loading="eager"
+              width={1024}
+              height={576}
+              {...image}
+            />
+          )}
+        </div>
+      </div>
+    )
+  }
+</section>

@@ -1,0 +1,190 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+
+const metadata = {
+  title: 'DIYA — Adaptive Learning for Competitive Exams',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore Features',
+        href: '#features',
+        // icon: 'tabler:bell',
+      },
+      {
+        text: 'Request Demo',
+        href: '#waitlist',
+        // icon: 'tabler:mail',
+      },
+    ]}
+  >
+    <Fragment slot="title"> Digital India's Young Aspirants </Fragment>
+
+    <Fragment slot="subtitle">
+      A competitive exam preparation platform for 1st to 10th graders — combining anti-cheating tech, bilingual
+      learning, and real-time performance analytics.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    tagline="Powerful Features Built for Modern Learning"
+    title="DIYA is Built for Students and Institutions"
+    subtitle="A complete competitive exam and learning platform designed for 1st–10th grade students with real-time analytics, secure assessments, and institute-level tools."
+    items={[
+      {
+        title: 'CBT-Based Exam Platform',
+        description:
+          'A computer-based testing experience tailored for competitive exam preparation with time limits, shuffling, and secure controls.',
+        icon: 'tabler:screen-share',
+      },
+      {
+        title: 'Detailed Results & Analytics',
+        description:
+          'Instant breakdown of correct, wrong, not attempted questions, topic- and chapter-wise analysis, and comparison with toppers and averages.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Teacher Uploads & Content',
+        description: 'Institutes can upload video lectures, notes, and assignments accessible only to their students.',
+        icon: 'tabler:cloud-upload',
+      },
+      {
+        title: 'Student Progress Monitoring',
+        description:
+          'Institutions can track student growth over time and focus on weak performers through real-time dashboards.',
+        icon: 'tabler:report-analytics',
+      },
+      {
+        title: 'Bilingual Experience',
+        description: 'Supports English and Marathi to ensure accessibility and comfort for diverse learners.',
+        icon: 'tabler:language',
+      },
+    ]}
+  />
+
+  <!-- Benefits Section -->
+  <Content
+    id="benefits"
+    tagline="Benefits"
+    title="Why Choose DIYA?"
+    subtitle="DIYA blends modern assessment technology with actionable insights so every stakeholder—from student to institute head—knows exactly where to focus next. Results arrive in seconds, letting teachers spend less time grading and more time teaching, while students receive a clear, motivating roadmap toward higher scores."
+  />
+
+  <!-- Student Features Section -->
+  <Content
+    id="student"
+    tagline="Student Experience"
+    title="Personalized Dashboard & Smart Quizzes"
+    items={[
+      {
+        title: 'Boost Your Scores',
+        description: 'Get instant feedback with personalized quizzes tailored to you.',
+      },
+      {
+        title: 'Stay Motivated',
+        description: 'Badges, achievements, and real-time progress keep you moving forward.',
+      },
+      {
+        title: 'Learn in Your Language',
+        description: 'Switch seamlessly between English and Marathi.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/student.jpg',
+      alt: 'Student Dashboard Preview',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold dark:text-white">Built to keep students motivated and informed</h3>
+    </Fragment>
+  </Content>
+
+  <Content
+    id="teacher"
+    isReversed
+    tagline="Teacher Experience"
+    title="Manage Classes & Analyze Student Performance"
+    items={[
+      {
+        title: 'Save Hours on Admin',
+        description: 'Automate grading, result analysis, and assignments.',
+      },
+      {
+        title: 'Spot Struggling Students Instantly',
+        description: 'Visual dashboards highlight exactly where to intervene.',
+      },
+      {
+        title: 'Share Lessons Once',
+        description: 'Videos and notes remain accessible to every class.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/default.png',
+      alt: 'Teacher Dashboard Preview',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold dark:text-white sm:text-3xl mb-2">Empowering teachers to teach smarter</h3>
+    </Fragment>
+  </Content>
+
+  <Content
+    id="mobile"
+    tagline="Mobile Experience"
+    title="Learn Anywhere, Anytime"
+    items={[
+      {
+        title: 'Full App, No Limits',
+        description: 'Access tests, analytics, and study materials straight from your phone.',
+      },
+      {
+        title: 'Learn on Your Schedule',
+        description: 'Take lessons and exams anytime—even offline.',
+      },
+      {
+        title: 'Stay Connected Everywhere',
+        description: 'All your progress syncs across devices.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/default.png',
+      alt: 'Mobile App Preview',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold dark:text-white sm:text-3xl mb-2">DIYA in your pocket — anytime, anywhere</h3>
+    </Fragment>
+  </Content>
+
+  <ContactUs
+    id="waitlist"
+    title="Join the Waitlist"
+    subtitle="Be the first to know when DIYA launches"
+    inputs={[
+      { type: 'text', name: 'name', label: 'Name' },
+      { type: 'email', name: 'email', label: 'Email' },
+      {
+        type: 'text',
+        name: 'role',
+        label: 'Role (Student/Institution)',
+        options: ['Student', 'Institution', 'External', 'Other'],
+      },
+    ]}
+    textarea={{ label: 'Message / Reason', name: 'message' }}
+    button="Request Demo"
+  />
+</Layout>

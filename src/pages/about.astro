@@ -1,0 +1,66 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+
+const metadata = {
+  title: 'About Us',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero tagline="About DIYA" image={{ src: '~/assets/images/hero-image.png', alt: 'DIYA Hero' }}>
+    <Fragment slot="title">Igniting Conceptual Clarity</Fragment>
+    <Fragment slot="subtitle">
+      DIYA A.IND started as a father-daughter conversation about why students struggle with competitive exams. That
+      spark became a movement to bring reasoning and understanding back into everyday learning.
+    </Fragment>
+  </Hero>
+
+  <Content title="Who We Are">
+    <Fragment slot="content">
+      <p>
+        DIYA A.IND began with a quiet dinner-table observation between a doctor and his inquisitive daughter. They saw
+        that many students worked hard yet relied on memorization rather than truly understanding concepts. Competitive
+        exams demand logical reasoning, so DIYA was created to help students think for themselves.
+      </p>
+      <br />
+      <p>
+        DIYA exists not to replace schools or teachers, but to amplify understanding from within the existing system.
+      </p>
+    </Fragment>
+  </Content>
+
+  <Content
+    title="What We Do"
+    items={[
+      {
+        title: 'Think Critically',
+        description: 'We encourage students to analyse and question, not just remember answers.',
+      },
+      { title: 'Real CET Questions', description: 'Practice competitive-style problems from the earliest years.' },
+      { title: 'Bridge Board & Competition', description: 'Connect classroom theory with national-level preparation.' },
+    ]}
+  />
+
+  <Content
+    title="What We Offer"
+    items={[
+      { title: 'CET-Aligned Practice Sets' },
+      { title: 'Concept Clarity Videos' },
+      { title: 'Logical Reasoning Drills' },
+      { title: 'Smart Feedback Systems' },
+    ]}
+  />
+
+  <Content title="A Movement, Not Just a Platform">
+    <Fragment slot="content">
+      <p>
+        DIYA is a promise shared by a father and daughter and now thousands of learners. We aim to support teachers,
+        prepare students beyond board exams and make learning clear, fair and future&#8209;ready.
+      </p>
+      <br />
+      <p>Let&#39;s spark the future together.</p>
+    </Fragment>
+  </Content>
+</Layout>
