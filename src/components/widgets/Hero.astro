@@ -18,8 +18,9 @@ const {
 
 <section
   {...id ? { id } : {}}
-  class="relative not-prose flex flex-col justify-center items-center min-h-[calc(100vh-76px)] pt-[76px]"
+  class="relative -mt-[76px] not-prose flex flex-col justify-center items-center min-h-screen"
 >
+  <div class="pt-[76px] pointer-events-none"></div>
   <!-- 🌄 Background Image -->
   <div class="absolute inset-0 z-[-2]" aria-hidden="true">
     <slot name="bg">
@@ -38,7 +39,10 @@ const {
   </div>
 
   <!-- 🌫️ Blur + Tint Overlay -->
-  <div class="absolute inset-0 z-[-1] bg-black/40 dark:bg-black/70 backdrop-blur-sm" aria-hidden="true"></div>
+  <div
+    class="absolute inset-0 z-[-1] backdrop-blur-sm bg-gradient-to-b from-black/20 via-black/40 to-black/40 dark:from-black/60 dark:via-black/80 dark:to-black/80"
+    aria-hidden="true"
+  ></div>
 
   <!-- ✨ Hero Content -->
   <div class="relative z-0 max-w-7xl mx-auto px-6 sm:px-8 text-center">
