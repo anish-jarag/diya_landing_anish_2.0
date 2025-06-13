@@ -18,8 +18,9 @@ const {
 
 <section
   {...id ? { id } : {}}
-  class="relative not-prose flex flex-col justify-center items-center min-h-[calc(100vh-76px)] pt-[76px]"
+  class="relative -mt-[76px] not-prose flex flex-col justify-center items-center min-h-screen"
 >
+  <div class="pt-[76px] pointer-events-none"></div>
   <!-- 🌄 Background Image -->
   <div class="absolute inset-0 z-[-2]" aria-hidden="true">
     <slot name="bg">
